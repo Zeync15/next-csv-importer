@@ -26,12 +26,7 @@ const SignIn = () => {
 
   if (status === "loading") return <div>Loading...</div>;
 
-  if (session) {
-    setTimeout(() => {
-      push("/");
-    }, 1000);
-    return <div>You already signed in</div>;
-  }
+  if (session) push("/");
 
   const handleOAuthSignIn = (provider) => signIn(provider);
 
