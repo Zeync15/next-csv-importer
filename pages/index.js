@@ -119,7 +119,11 @@ const Csv = () => {
                 </div>
 
                 <br />
-                <a href="https://extendsclass.com/csv-generator.html" target="_blank">
+                <a
+                  href="https://extendsclass.com/csv-generator.html"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   Upload a file with csv generator
                 </a>
               </>

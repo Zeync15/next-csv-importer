@@ -40,10 +40,10 @@ const ReactTable = ({ columns, data }) => {
 
       <Table {...getTableProps()} className="table-bordered mt-3" responsive>
         <thead>
-          {headerGroups.map((headerGroup) => (
-            <tr {...headerGroup.getHeaderGroupProps()}>
-              {headerGroup.headers.map((column) => (
-                <th {...column.getHeaderProps(column.getSortByToggleProps())}>
+          {headerGroups.map((headerGroup, index) => (
+            <tr key={index} {...headerGroup.getHeaderGroupProps()}>
+              {headerGroup.headers.map((column, index) => (
+                <th key={index} {...column.getHeaderProps(column.getSortByToggleProps())}>
                   {column.render("Header")}
                   <span>{column.isSorted ? (column.isSortedDesc ? " 🔽" : " 🔼") : ""}</span>
                 </th>
@@ -53,13 +53,14 @@ const ReactTable = ({ columns, data }) => {
         </thead>
 
         <tbody {...getTableBodyProps()}>
-          {page.map((row) => {
+          {page.map((row, index) => {
             prepareRow(row);
             return (
-              <tr {...row.getRowProps()}>
-                {row.cells.map((cell) => {
+              <tr key={index} {...row.getRowProps()}>
+                {row.cells.map((cell, index) => {
                   return (
                     <td
+                      key={index}
                       {...cell.getCellProps({
                         style: {
                           minWidth: 200,

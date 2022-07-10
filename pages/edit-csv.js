@@ -9,7 +9,7 @@ import CsvNavigateButton from "../components/CsvNavigationButton";
 import EditReactTable from "../components/EditReactTable";
 import ReactTable from "../components/ReactTable";
 
-const editCsv = () => {
+const EditCsv = () => {
   const { push } = useRouter();
   const { data: session, status } = useSession({
     required: true,
@@ -157,7 +157,11 @@ const editCsv = () => {
                 </div>
 
                 <br />
-                <a href="https://extendsclass.com/csv-generator.html" target="_blank">
+                <a
+                  href="https://extendsclass.com/csv-generator.html"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   Upload a file with csv generator
                 </a>
               </>
@@ -216,4 +220,4 @@ const editCsv = () => {
   );
 };
 
-export default editCsv;
+export default EditCsv;
