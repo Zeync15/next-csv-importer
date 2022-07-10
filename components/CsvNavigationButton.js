@@ -4,7 +4,7 @@ import { Button } from "react-bootstrap";
 const CsvNavigateButton = ({ text, onClick, disabled, customStyle }) => {
   return (
     <Button
-      style={{ margin: "10px 10px 10px 0px", ...customStyle }}
+      style={{ marginLeft: "10px", marginBottom: "10px", ...customStyle }}
       variant="info"
       onClick={onClick}
       disabled={disabled}

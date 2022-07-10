@@ -1,10 +1,6 @@
-import { MongoDBAdapter } from "@next-auth/mongodb-adapter";
 import NextAuth from "next-auth";
 import GithubProvider from "next-auth/providers/github";
 import GoogleProvider from "next-auth/providers/google";
-import clientPromise from "../../database/connectDB";
-
-// send grid password: Asdqwe123!@#4!@#4
 
 export default NextAuth({
   providers: [
@@ -15,10 +11,16 @@ export default NextAuth({
     GoogleProvider({
       clientId: process.env.GOOGLE_ID,
       clientSecret: process.env.GOOGLE_SECRET,
+      // authorization: {
+      //   params: {
+      //     prompt: "consent",
+      //     access_type: "offline",
+      //     response_type: "code"
+      //   }
+      // }
     }),
   ],
   pages: {
     signIn: "/auth/signIn",
   },
-  // adapter: MongoDBAdapter(clientPromise),
 });

@@ -1,27 +1,14 @@
 import React from "react";
-import Sidebar from "./Sidebar";
 import { Container } from "react-bootstrap";
+import NavBar from "./NavBar";
 
 const Layout = ({ children }) => {
   return (
     <>
-      {/* <Sidebar /> */}
-      {/* <Container>
-        <div>{children}</div>
-      </Container> */}
+      <NavBar />
 
       <div className="d-flex justify-content-center">
-        <Container
-          className="px-3 my-5"
-          style={{
-            backgroundColor: "#303030",
-            borderRadius: "5px",
-            position: "relative",
-            minHeight: "90vh",
-          }}
-        >
-          {children}
-        </Container>
+        <Container className="px-3 my-3">{children}</Container>
       </div>
     </>
   );

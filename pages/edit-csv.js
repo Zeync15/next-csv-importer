@@ -1,7 +1,7 @@
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import { parse } from "papaparse";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useMemo } from "react";
 import { Form, Row, Col } from "react-bootstrap";
 import Stepper from "react-stepper-horizontal/lib/Stepper";
@@ -9,14 +9,24 @@ import CsvNavigateButton from "../components/CsvNavigationButton";
 import EditReactTable from "../components/EditReactTable";
 import ReactTable from "../components/ReactTable";
 
-const Csv = () => {
+const editCsv = () => {
   const { push } = useRouter();
   const { data: session, status } = useSession({
     required: true,
     onUnauthenticated: () => push("/auth/signIn"),
   });
 
-  if (status === "loading") return <div>Loading...</div>;
+  console.log(status, session);
+
+  useEffect(() => {
+    checkLoading();
+  }, []);
+
+  const checkLoading = () => {
+    if (status === "loading") {
+      return <div>Loading...</div>;
+    }
+  };
 
   // table state
   const [fileName, setFileName] = useState("");
@@ -40,8 +50,8 @@ const Csv = () => {
     e.preventDefault();
 
     // verify the file type
-    console.log(e.target?.files[0].type); // choose from file
-    console.log(e.dataTransfer?.files[0].type); // drop file
+    // console.log(e.target?.files[0].type); // choose from file
+    // console.log(e.dataTransfer?.files[0].type); // drop file
 
     // determine the html event type (in this case, "drop" or "change")
     // different events use different methods to get the file (e.g. "dataTransfer" or "target")
@@ -83,6 +93,7 @@ const Csv = () => {
         : alert("Wrong file type, please upload a CSV file")
     );
   };
+
   const data = useMemo(() => csv, [csv]);
   const columns = useMemo(() =>
     column.map((item) => {
@@ -98,14 +109,18 @@ const Csv = () => {
     console.log(csv);
   };
 
+  if (!session) {
+    return <div>No User</div>;
+  }
+
   return (
     <div>
       {/* <h3 className="mb-5">CSV Importer</h3> */}
       <div className="border-bottom pt-2">
-        <h4>CSV Importer</h4>
+        <h4>Edit CSV Importer</h4>
       </div>
 
-      <div className="p-5">
+      <div className="pt-3 px-2">
         {/* react-stepper-horizontal UI */}
         <Stepper
           steps={sections}
@@ -140,6 +155,11 @@ const Csv = () => {
                 >
                   Drop your CSV file here
                 </div>
+
+                <br />
+                <a href="https://extendsclass.com/csv-generator.html" target="_blank">
+                  Upload a file with csv generator
+                </a>
               </>
             )}
           </>
@@ -148,7 +168,7 @@ const Csv = () => {
         {currentPage === 1 && (
           <>
             <br />
-            <Row>
+            <Row className="mt-2">
               <Col>
                 <h3>{fileName}</h3>
               </Col>
@@ -164,7 +184,7 @@ const Csv = () => {
         {currentPage === 2 && (
           <>
             <br />
-            <Row>
+            <Row className="mt-2">
               <Col>
                 <h3>{fileName}</h3>
               </Col>
@@ -180,7 +200,7 @@ const Csv = () => {
         {currentPage === 3 && (
           <>
             <br />
-            <Row>
+            <Row className="mt-2">
               <Col>
                 <h3>CSV file imported</h3>
               </Col>
@@ -196,4 +216,4 @@ const Csv = () => {
   );
 };
 
-export default Csv;
+export default editCsv;
