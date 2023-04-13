@@ -89,10 +89,6 @@ const Csv = () => {
 
   return (
     <div>
-      <Head>
-        <title>Next Csv Importer by Ze Yen</title>
-        <meta name="description" content="CSV Importer App created by using Nextjs and BootStrap" />
-      </Head>
       {/* <h3 className="mb-5">CSV Importer</h3> */}
       <div className="border-bottom pt-2">
         <h4>CSV Importer</h4>
