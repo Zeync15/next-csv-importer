@@ -1,14 +1,13 @@
-import { useSession } from "next-auth/react";
+// import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import { parse } from "papaparse";
 import React, { useEffect, useState } from "react";
 import { useMemo } from "react";
 import { Form, Row, Col } from "react-bootstrap";
-import Stepper from "react-stepper-horizontal/lib/Stepper";
+// import Stepper from "react-stepper-horizontal/lib/Stepper";
 import CsvNavigateButton from "../components/CsvNavigationButton";
-import EditReactTable from "../components/EditReactTable";
+// import EditReactTable from "../components/EditReactTable";
 import ReactTable from "../components/ReactTable";
-import Head from "next/head";
 
 const Csv = () => {
   // table state
@@ -19,12 +18,12 @@ const Csv = () => {
   // steps state
   // https://www.npmjs.com/package/react-stepper-horizontal
   const [currentPage, setCurrentPage] = useState(0);
-  const sections = [
-    { title: "Upload CSV file" },
-    { title: "View your file" },
-    { title: "Edit your file" },
-    { title: "Submit your file" },
-  ];
+  // const sections = [
+  //   { title: "Upload CSV file" },
+  //   { title: "View your file" },
+  //   { title: "Edit your file" },
+  //   { title: "Submit your file" },
+  // ];
   const router = useRouter();
   const next = () => setCurrentPage(currentPage + 1);
   const prev = () => setCurrentPage(currentPage - 1);

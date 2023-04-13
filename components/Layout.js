@@ -6,14 +6,6 @@ import Head from "next/head";
 const Layout = ({ children }) => {
   return (
     <>
-     <Head>
-          <title>Next Csv Importer by Ze Yen</title>
-          <meta
-            name="description"
-            content="CSV Importer App created by using Nextjs and BootStrap"
-          />
-        </Head>
-
       <NavBar />
 
       <div className="d-flex justify-content-center">
