@@ -8,6 +8,7 @@ import Stepper from "react-stepper-horizontal/lib/Stepper";
 import CsvNavigateButton from "../components/CsvNavigationButton";
 import EditReactTable from "../components/EditReactTable";
 import ReactTable from "../components/ReactTable";
+import Head from "next/head";
 
 const Csv = () => {
   // table state
@@ -88,6 +89,10 @@ const Csv = () => {
 
   return (
     <div>
+      <Head>
+        <title>Next Csv Importer by Ze Yen</title>
+        <meta name="description" content="CSV Importer App created by using Nextjs and BootStrap" />
+      </Head>
       {/* <h3 className="mb-5">CSV Importer</h3> */}
       <div className="border-bottom pt-2">
         <h4>CSV Importer</h4>
